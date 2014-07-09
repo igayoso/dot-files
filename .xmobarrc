@@ -1,0 +1,27 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+, bgColor = "black"
+, fgColor = "grey"
+, position = Top
+, lowerOnStart = True
+, commands = [
+               Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+             , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+             , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+             , Run Memory ["-t","Mem: <usedratio>%"] 10
+             , Run Swap [ ] 10
+             , Run Date "%a %b %_d %Y %H:%M" "date" 10
+             , Run BatteryP ["BAT0"]
+              ["-t", "Battery:<left>%",
+               "-L", "10", "-H", "80", "-p", "3",
+               "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+               "-L", "-15", "-H", "-5",
+               "-l", "red", "-m", "blue", "-h", "green"]
+              600
+              , Run CoreTemp ["-t", "Temp:<core0>|<core1>C",
+               "-L", "40", "-H", "60",
+               "-l", "lightblue", "-n", "gray90", "-h", "red"] 51
+              ]
+, sepChar = "%"
+, alignSep = "}{"
+, template = "%battery% | %cpu% | %memory% * %swap% | %coretemp% | %wlan0%}{<fc=#ee9a00>%date%</fc>"
+}

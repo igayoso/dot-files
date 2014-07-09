@@ -1,0 +1,10 @@
+[user]
+  name = igayoso
+  email = igayoso@
+[core]
+  excludesfile = <%= ENV['HOME'] %>/.gitignore
+  editor = "vim -f"
+[apply]
+  whitespace = fix
+[github]
+  user = igayoso
